@@ -1,0 +1,17 @@
+ body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+  }
+  #question-container {
+    margin-bottom: 20px;
+  }
+  .answer-btn {
+    display: block;
+    margin: 8px;
+    padding: 20px;
+    width: 200px;
+  }
+  #result {
+    font-weight: bold;
+    margin-top: 20px;
+  }
