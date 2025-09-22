@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Simple Quiz Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>Simple Quiz Game</h1>
+<div id="quiz-container">
+  <div id="question-container">
+    <div id="question"></div>
+    <div id="answers"></div>
+  </div>
+  <button id="nextBtn" style="display:none;">Next Question</button>
+  <div id="result"></div>
+</div>
+
+<script>
+const quizData = [
+  {
+    question: "Where is the Eiffel Tower?",
+    answers: ["Berlin", "London", "Paris", "Madrid"],
+    correct: "Paris"
+  },
+  {
+    question: "What color is the sky?",
+    answers: ["Red", "Green", "Blue", "Yellow"],
+    correct: "Blue"
+  },
+  {
+    question: "What planet is known as the Red Planet?",
+    answers: ["Earth", "Mars", "Jupiter", "Saturn"],
+    correct: "Mars"
+  }
+{
+    question: "What do bees collect to make Honey?",
+    answers: ["Nectar", "Juice", "Flower Petals", "Sap"],
+    correct: "Nectar"
+  }
+question: "How many continents are there?",
+    answers: ["9", "4", "6", "7"],
+    correct: "7"
+  },
+  {
+    question: "What does a caterpillar become?",
+    answers: ["Butterfly", "Beetle", "Spider", "Fly"],
+    correct: "Blue"
+  },
+  {
+    question: "Who painted the Mona Lisa?",
+    answers: ["Michelangelo", "Van Gogh", "Leonardo Da Vinci", "Picasso"],
+    correct: "Leonardo Da Vinci"
+  }
+
+];
+
+let currentQuestion = 0;
+
+const question = document.getElementById('question');
+const answers = document.getElementById('answers');
+const result = document.getElementById('result');
+const nextBtn = document.getElementById('nextBtn');
+
+function loadQuestion() {
+  result.innerText = '';
+  nextBtn.style.display = 'none';
+
+  const currentData = quizData[currentQuestion];
+  question.innerText = currentData.question;
+  answers.innerHTML = '';
+
+  currentData.answers.forEach(answer => {
+    const button = document.createElement('button');
+    button.innerText = answer;
+    button.className = 'answer-btn';
+    button.onclick = () => selectAnswer(answer);
+    answers.appendChild(button);
+  });
+}
+
+function selectAnswer(selected) {
+  const currentData = quizData[currentQuestion];
+  if (selected === currentData.correct) {
+    result.innerText = 'Correct!';
+  } else {
+    result.innerText = `Wrong! The correct answer is ${currentData.correct}.`;
+  }
+  Array.from(answers.children).forEach(btn => btn.disabled = true);
+  if (currentQuestion < quizData.length - 1) {
+    nextBtn.style.display = 'block';
+  } else {
+    nextBtn.innerText = 'Finish';
+    nextBtn.style.display = 'block';
+  }
+}
+
+nextBtn.onclick = () => {
+  currentQuestion++;
+  if (currentQuestion< quizData.length) {
+    loadQuestion();
+  } else {
+    question.innerText = 'Quiz finished!';
+    answers.innerHTML = '';
+    nextBtn.style.display = 'none';
+  }
+};
+loadQuestion();
+</script>
+
+</body>
+</html>
