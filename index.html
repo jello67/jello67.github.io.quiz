@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
-<title>Simple Quiz Game</title>
-  <link rel="stylesheet" href="styles.css">
+<title>Quiz Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="gameContainer" style=" font-family: Arial, sans-serif; padding: 20px; text-align: center;"></div>
 
-<h1>Simple Quiz Game</h1>
+<h1>Quiz Game</h1>
 <div id="quiz-container">
   <div id="question-container">
     <div id="question"></div>
@@ -34,12 +35,13 @@ const quizData = [
     question: "What planet is known as the Red Planet?",
     answers: ["Earth", "Mars", "Jupiter", "Saturn"],
     correct: "Mars"
-  }
+  },
 {
     question: "What do bees collect to make Honey?",
     answers: ["Nectar", "Juice", "Flower Petals", "Sap"],
     correct: "Nectar"
-  }
+  },
+  {
 question: "How many continents are there?",
     answers: ["9", "4", "6", "7"],
     correct: "7"
@@ -53,7 +55,7 @@ question: "How many continents are there?",
     question: "Who painted the Mona Lisa?",
     answers: ["Michelangelo", "Van Gogh", "Leonardo Da Vinci", "Picasso"],
     correct: "Leonardo Da Vinci"
-  }
+  },
 
 ];
 
